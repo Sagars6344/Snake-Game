@@ -148,6 +148,19 @@ function restartGame(){
     score = 0
     time = '00-00'
 
+    timerIntervalId = setInterval(() =>{
+        let[min,sec] = time.split("-").map(Number)
+
+        if(sec == 59){
+            min += 1
+            sec = 0
+        }else{
+            sec += 1
+        }
+        time = `${min}-${sec}`
+        timeElement.innerText = time
+    },1000)
+
     scoreElement.innerText = score
     timeElement.innerText = time
     highScoreElement.innerText = highScore
